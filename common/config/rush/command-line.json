@@ -1,0 +1,34 @@
+/**
+ * This configuration file defines custom commands for the "rush" command-line.
+ * More documentation is available on the Rush website: https://rushjs.io
+ */
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/command-line.schema.json",
+
+  /**
+   * Custom "commands" introduce new verbs for the command-line.  To see the help for these
+   * example commands, try "rush --help", "rush my-bulk-command --help", or
+   * "rush my-global-command --help".
+   */
+   "commands": [
+    {
+      "name": "commitlint",
+      "commandKind": "global",
+      "summary": "Used by the pre-commit Git hook. This command invokes commitlint to ensure that the commit messages meet the conventional commit format",
+      "safeForSimultaneousRushProcesses": true,
+      "autoinstallerName": "rush-commitlint",
+      "shellCommand": "commitlint"
+    }
+  ],
+  "parameters": [
+    {
+      "parameterKind": "string",
+      "argumentName": "MESSAGE",
+      "longName": "--edit",
+      "description": "",
+      "associatedCommands": [
+        "commitlint"
+      ]
+    }
+  ]
+}

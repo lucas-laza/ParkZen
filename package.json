@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "pnpm": "^8.7.6"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^17.7.0"
+  }
+}
