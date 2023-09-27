@@ -6,6 +6,9 @@ export class AppController {
 
   @Get()
   getHello(): string {
-    return "Coucou UwU";
+    // const coucou = 'oui';
+    const a = 'a';
+    console.log(a);
+    return 'Coucou UwU';
   }
 }
