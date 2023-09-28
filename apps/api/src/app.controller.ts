@@ -5,7 +5,7 @@ import { CreateParkSlot } from './services/ParkSlot/CreateParkSlot.service';
 
 @Controller()
 export class AppController {
-  constructor(public parkSlotService: CreateParkSlot)  {}
+  constructor(public parkSlotService: CreateParkSlot) {}
 
   @Get()
   getHello(): string {
@@ -13,13 +13,10 @@ export class AppController {
   }
 
   @Post('parks')
-  async createPark(@Body() payload : CreateParkDTO) {
-    
+  async createPark(@Body() payload: CreateParkDTO) {
     const slot = this.parkSlotService.handle(payload);
-    console.log("SLOT", slot);
-    
+    console.log('SLOT', slot);
+
     return response.status(HttpStatus.NO_CONTENT);
   }
 }
-
-

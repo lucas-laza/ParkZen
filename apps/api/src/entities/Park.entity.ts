@@ -1,9 +1,9 @@
-import { CreateParkDTO } from "src/dto/CreatePark.dto";
-import { Address } from "./Address.entity";
-import { Caracteristics } from "./Caracteristics.entity";
-import { Renter } from "./Renter.entity";
-import { SpaceType } from "./SpaceType.entity";
-import { randomUUID } from "crypto";
+import { CreateParkDTO } from 'src/dto/CreatePark.dto';
+import { Address } from './Address.entity';
+import { Caracteristics } from './Caracteristics.entity';
+import { Renter } from './Renter.entity';
+import { SpaceType } from './SpaceType.entity';
+import { randomUUID } from 'crypto';
 
 export class ParkSlot {
   id: string;
@@ -16,10 +16,10 @@ export class ParkSlot {
   caracteristics: Caracteristics;
   createdAt: Date;
 
-  private constructor(data: CreateParkDTO ) {
+  private constructor(data: CreateParkDTO) {
     const id = randomUUID();
     const createdAt = new Date();
-    
+
     this.id = id;
     this.address = new Address(data.address);
     this.priceForOneHour = data.priceForOneHour;

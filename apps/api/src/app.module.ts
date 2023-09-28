@@ -5,6 +5,6 @@ import { CreateParkSlot } from './services/ParkSlot/CreateParkSlot.service';
 @Module({
   imports: [],
   controllers: [AppController],
-  providers: [CreateParkSlot]
+  providers: [CreateParkSlot],
 })
 export class AppModule {}
