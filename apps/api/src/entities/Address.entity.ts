@@ -4,9 +4,9 @@ export class Address {
   city: string;
   zipCode: string;
 
-  constructor(data) {
-    this.street = data.street;
-    this.city = data.city;
-    this.zipCode = data.zipCode;
+  constructor(data: Address) {
+    this.street = data.street || '';
+    this.city = data.city || '';
+    this.zipCode = data.zipCode || '';
   }
 }

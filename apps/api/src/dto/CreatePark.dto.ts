@@ -1,33 +1,71 @@
 // user.model.ts
 
-export type Address = {
+import { IsBoolean, IsDate, IsNotEmpty, IsNumber, IsOptional, ValidateNested } from "class-validator";
+import { Type } from "class-transformer";
+
+export class Address {
+  @IsNotEmpty()
   street: string;
+  @IsNotEmpty()
   city: string;
+  @IsNotEmpty()
+  @IsNumber()
   zipCode: string;
 };
 
-export type Renter = {
+export class Renter {
+  @IsNotEmpty()
   id: number;
+  @IsNotEmpty()
   firstName: string;
+  @IsNotEmpty()
   lastName: string;
 };
 
-export type SpaceType = {
+export class SpaceType {
+  @IsNotEmpty()
   id: number;
+  @IsNotEmpty()
   name: string;
 };
 
-export type Caracteristics = {
+export class Caracteristics {
+  @IsNotEmpty()
+  @IsBoolean()
   isPublic: boolean;
+  @IsNotEmpty()
+  @IsBoolean()
   isIndoor: boolean;
 };
 
-export type CreateParkDTO = {
+export class CreateParkDTO {
+  @IsNotEmpty()
   address: Address;
+
+  @IsNotEmpty()
+  @IsNumber()
   priceForOneHour: number;
+
+  @IsNotEmpty()
+  @ValidateNested()
+  // @Type(() => Renter)
   renter: Renter;
+
+  @IsOptional()
+  @IsDate()
   rentStartAt: Date;
+
+  @IsOptional()
+  @IsDate()
   rentEndAt: Date;
+
+  @IsNotEmpty()
+  @ValidateNested()
+  // @Type(() => SpaceType)
   spaceType: SpaceType;
+
+  @IsNotEmpty()
+  @ValidateNested()
+  // @Type(() => Caracteristics)
   caracteristics: Caracteristics;
 };

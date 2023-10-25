@@ -4,9 +4,9 @@ export class Renter {
   firstName: string;
   lastName: string;
 
-  constructor(data) {
-    this.id = data.id;
-    this.firstName = data.firstName;
-    this.lastName = data.lastName;
+  constructor(data: Renter) {
+    // this.id = data.id;
+    this.firstName = data.firstName || '';
+    this.lastName = data.lastName || '';
   }
 }
