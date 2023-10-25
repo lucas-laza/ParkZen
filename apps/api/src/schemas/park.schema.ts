@@ -9,7 +9,11 @@ export type ParkDocument = HydratedDocument<Park>;
 export class Park {
   // @Prop()
   // _id: string;
-  @Prop({ required: true, type: mongoose.Schema.Types.ObjectId, ref: 'Address' } )
+  @Prop({
+    required: true,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Address',
+  })
   address: Address;
   @Prop({ required: true })
   priceForOneHour: number;

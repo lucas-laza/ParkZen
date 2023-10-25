@@ -1,7 +1,11 @@
-// user.model.ts
-
-import { IsBoolean, IsDate, IsNotEmpty, IsNumber, IsOptional, ValidateNested } from "class-validator";
-import { Type } from "class-transformer";
+import {
+  IsBoolean,
+  IsDate,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  ValidateNested,
+} from 'class-validator';
 
 export class Address {
   @IsNotEmpty()
@@ -11,7 +15,7 @@ export class Address {
   @IsNotEmpty()
   @IsNumber()
   zipCode: string;
-};
+}
 
 export class Renter {
   @IsNotEmpty()
@@ -20,14 +24,14 @@ export class Renter {
   firstName: string;
   @IsNotEmpty()
   lastName: string;
-};
+}
 
 export class SpaceType {
   @IsNotEmpty()
   id: number;
   @IsNotEmpty()
   name: string;
-};
+}
 
 export class Caracteristics {
   @IsNotEmpty()
@@ -36,7 +40,7 @@ export class Caracteristics {
   @IsNotEmpty()
   @IsBoolean()
   isIndoor: boolean;
-};
+}
 
 export class CreateParkDTO {
   @IsNotEmpty()
@@ -68,4 +72,4 @@ export class CreateParkDTO {
   @ValidateNested()
   // @Type(() => Caracteristics)
   caracteristics: Caracteristics;
-};
+}

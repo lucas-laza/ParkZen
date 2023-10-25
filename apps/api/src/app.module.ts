@@ -6,10 +6,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ParkModule } from './modules/park.module';
 
 @Module({
-  imports: [
-    MongooseModule.forRoot('mongodb://localhost/coucou'),
-    ParkModule
-  ],
+  imports: [MongooseModule.forRoot('mongodb://localhost/coucou'), ParkModule],
   controllers: [AppController],
   providers: [CreateParkSlot],
 })

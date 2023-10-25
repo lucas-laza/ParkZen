@@ -2,7 +2,7 @@ import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Park } from '../../schemas/park.model';
-import { ParkSlot } from 'src/entities/Park.entity';
+// import { ParkSlot } from 'src/entities/Park.entity';
 
 @Injectable()
 export class ParkService {
