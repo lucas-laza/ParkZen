@@ -1,3 +1,41 @@
+
+$primary-color: #FC7012;
+
+$theme-colors: (
+    "primary":$primary-color,
+);
+
+@import '~bootstrap/scss/bootstrap';
+
+a{color: black}
+
+.btn{
+  border-radius: 32px;
+  font-weight: bold;
+  padding-right: 16px;
+  padding-left: 16px;
+  
+  &:hover{
+    color: white;
+  }
+
+  &-outline-primary{
+    color: $primary-color;
+  }
+
+  &-primary{
+    color: white !important;
+
+    &:hover{
+      color: white;
+    }
+  }
+  
+  &-check:checked{
+    color: white;
+  }
+}
+
 .createParkForm{
   width: 90%;
   &__radios{
@@ -14,12 +52,34 @@
       display: flex;
       flex-direction: row;
       &>img{
+        filter: grayscale(100%);
         align-self: center;
         width: 100%;
       }
     }
     &__radio__active{
-      border-color: #0c6bf8 !important;
+      border-color: $primary-color !important;
     }
    }
 }
+
+.nav-link{
+  color: black;
+  
+  &:hover{
+    color: black;
+  }
+} 
+
+.active{
+  background-color: transparent !important;
+  color: $primary-color !important;
+  font-weight: bold;
+}
+
+.radio_active{
+  &>img{
+    filter: none;
+  }
+}
+

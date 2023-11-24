@@ -1,4 +1,4 @@
-import Home from './home'
-import './home.scss'
+import Parking from './parking'
+import './parking.scss'
 
-export default Home
+export default Parking
