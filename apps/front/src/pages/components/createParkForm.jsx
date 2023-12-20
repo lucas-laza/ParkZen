@@ -30,8 +30,9 @@ export default function CreateParkForm() {
 
     const fetchData = async () => {
         const datas = {
-            firstName : name,
+            name : name,
             priceForOneHour : price,
+            rentStartAt : dateBegin,
             renter : {
                 firstName : "Antoine",
                 lastName : "Gaudry"
