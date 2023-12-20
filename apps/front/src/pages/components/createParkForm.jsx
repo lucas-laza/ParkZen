@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import SelectTypeForm from './selectTypeForm'
+import SelectTypeForm from './selectTypeForm';
+import axios from 'axios';
 export default function CreateParkForm() {
 
     const [isPrivate, setIsPrivate] = useState(true);
@@ -11,10 +12,56 @@ export default function CreateParkForm() {
     const [address, setAddress] = useState(null);
     const [city, setCity] = useState(null);
     const [postalCode, setPostalCode] = useState(null);
+    const [type, setType] = useState(null);
+
 
     function submit(){
-        console.log(name, dateBegin, price, address, city, postalCode)
+        fetchData();
     }
+
+    // Définir les headers
+    const headers = {
+        'Content-Type': 'application/json'
+    };
+
+    const axiosConfig = {
+        headers: headers
+    };
+
+    const fetchData = async () => {
+        const datas = {
+            firstName : name,
+            priceForOneHour : price,
+            renter : {
+                firstName : "Antoine",
+                lastName : "Gaudry"
+            },
+            spaceType : {
+                id : type
+            },
+            caracteristics : {
+                isPublic : isPrivate,
+                isIndoor : isOutdoor
+            },
+            address : {
+                street : address,
+                city : city,
+                zipCode : postalCode
+            }
+        };
+
+        try {
+            const response = await axios.post('http://localhost:3000/parks', datas, axiosConfig);
+            if(response){
+                console.log(response);
+            }
+        } catch (error) {
+            console.error(error);
+        } finally {
+            console.log('Call done');
+        }
+    };
+
 
     return(
         <>
@@ -79,7 +126,7 @@ export default function CreateParkForm() {
                                 </div>
                                 <label htmlFor="type" className="form-label">Type de place </label>
                                 {/*Ici on peut faire un tableau et un for */}
-                                <SelectTypeForm/>
+                                <SelectTypeForm type={type} setType={setType}/>
 
                             </div>
                         </div>
