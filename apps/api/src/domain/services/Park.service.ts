@@ -15,7 +15,8 @@ export class ParkService {
     private readonly jwtService: JwtService,
   ) {}
 
-  async create(payload: CreateParkDTO, token: string) {
+  // async create(payload: CreateParkDTO, token: string) {
+  async create(payload: CreateParkDTO) {
     const date = payload.rentStartAt;
     const currentDate = new Date();
     console.log(currentDate);
@@ -25,15 +26,15 @@ export class ParkService {
       return response.status(HttpStatus.BAD_REQUEST);
     }
 
-    const tokenData = this.decodeToken(token);
+    // const tokenData = null;
+    // const tokenData = this.decodeToken(token);
 
-    console.log(tokenData);
-    if (tokenData) {
-      payload['user'] = tokenData;
-      
-    } else {
-      return response.status(HttpStatus.BAD_REQUEST);
-    }
+    // console.log(tokenData);
+    // if (tokenData) {
+    //   payload['user'] = tokenData;
+    // } else {
+    //   // return response.status(HttpStatus.BAD_REQUEST);
+    // }
     const createdPark = new this.parkModel(payload);
     return createdPark.save();
   }

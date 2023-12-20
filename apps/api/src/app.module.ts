@@ -3,7 +3,6 @@ import { AppController } from './infrastructure/controller/app.controller';
 // import { CreateParkSlot } from './domain/services/CreateParkSlot.service';
 import { JwtModule } from '@nestjs/jwt';
 
-
 import { MongooseModule } from '@nestjs/mongoose';
 import { ParkModule } from './infrastructure/repository/park.module';
 
@@ -14,7 +13,7 @@ import { ParkModule } from './infrastructure/repository/park.module';
     JwtModule.register({
       secret: '!park59zen800coucou*', // Change this to a secure secret key
       signOptions: { expiresIn: '1h' }, // Set the expiration time for the token
-    })
+    }),
   ],
   controllers: [AppController],
   providers: [],

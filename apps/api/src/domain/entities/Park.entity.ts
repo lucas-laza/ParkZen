@@ -35,7 +35,7 @@ export class ParkSlot {
     this.createdAt = createdAt;
     this.renterService = renterService;
     console.log(data);
-    
+
     // if (data.user_id) {
     //   this.fetchRenter(data.user_id).then((renter) => {
     //     this.renter = renter;

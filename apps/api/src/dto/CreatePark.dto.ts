@@ -74,6 +74,5 @@ export class CreateParkDTO {
   // @Type(() => Caracteristics)
   caracteristics: Caracteristics;
 
-
-  user_id: number
+  user_id: number;
 }
