@@ -6,6 +6,7 @@ import {
   IsOptional,
   ValidateNested,
 } from 'class-validator';
+import { Type } from 'class-transformer';
 
 export class Address {
   @IsNotEmpty()
@@ -50,9 +51,9 @@ export class CreateParkDTO {
   @IsNumber()
   priceForOneHour: number;
 
-  @IsNotEmpty()
+  // @IsNotEmpty()
   @ValidateNested()
-  // @Type(() => Renter)
+  @Type(() => Renter)
   renter: Renter;
 
   @IsOptional()
@@ -72,4 +73,7 @@ export class CreateParkDTO {
   @ValidateNested()
   // @Type(() => Caracteristics)
   caracteristics: Caracteristics;
+
+
+  user_id: number
 }

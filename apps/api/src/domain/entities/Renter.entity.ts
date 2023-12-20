@@ -5,7 +5,7 @@ export class Renter {
   lastName: string;
 
   constructor(data: Renter) {
-    // this.id = data.id;
+    this.id = data.id;
     this.firstName = data.firstName || '';
     this.lastName = data.lastName || '';
   }
