@@ -26,7 +26,7 @@ export class Park {
   priceForOneHour: number;
   renter: Renter;
   caracteristics: Caracteristics;
-  spaceType:SpaceType
+  spaceType: SpaceType;
   name: string;
   // @Prop({ required: true })
   // rentStartAt: Date;
