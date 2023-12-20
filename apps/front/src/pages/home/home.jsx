@@ -31,11 +31,13 @@ export default function Home() {
         getParks();
     }, []);
 
+
     const getParks = async () => {
         try {
             const response = await axios.get('http://localhost:3000/parks');
             if(response){
-                console.log('response : ' + response);
+                setParks(response.data);
+                console.log('response : ' + JSON.stringify(response.data));
             }
         } catch (error) {
             console.error(error);
@@ -56,22 +58,20 @@ export default function Home() {
                 <div className="home_widgets_parks d-flex flex-column">
                     <div className='d-flex flex-row justify-content-between align-items-center'>
                             <span className="home_widgets_parks_title">Vos places de parking</span>
-                        <CreateParkForm/>
+                        <CreateParkForm submit={getParks}/>
                     </div>
                     <div className='home_widgets_parks_content'>
-                        <div className="addressContainer">
-                            <div className="d-flex flex-column align-items-start justify-content-between">
-                                <span className="addressContainer_address">123 rue du test, Amiens 80000</span>
-                                <span className="addressContainer_renter mt-1">Publié par Antoine Gaudry</span>
-                            </div>
-                            <DeleteParkForm id={1}/>
-                        </div>
+                        
                         {parks.length > 0 ?
-                            parks.each(park =>
-                                <div>
-                                    <span></span>
+                            parks.map((park, index) => (
+                                <div key={index} className="addressContainer">
+                                    <div className="d-flex flex-column align-items-start justify-content-between">
+                                        <span className="addressContainer_address">{park.address.street}, {park.address.city} {park.address.zipCode}</span>
+                                        <span className="addressContainer_renter mt-1">Publié par Antoine Gaudry</span>
+                                    </div>
+                                    <DeleteParkForm submit={getParks} id={park.id}/>
                                 </div>
-                            )
+                            ))
                             :
                             <span className="home_widgets_parks_subtitle text-secondary">Vous n'avez aucune place de parking en location, n'hesitez pas a en ajouter une ! dx </span>
                         }

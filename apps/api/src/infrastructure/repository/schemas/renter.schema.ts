@@ -10,7 +10,6 @@ export class Renter {
 
   @Prop()
   firstName: string;
-
 }
 
 export const RenterSchema = SchemaFactory.createForClass(Renter);

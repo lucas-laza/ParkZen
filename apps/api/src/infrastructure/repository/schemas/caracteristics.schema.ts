@@ -10,7 +10,7 @@ export class Caracteristics {
 
   @Prop()
   isPublic: boolean;
-
 }
 
-export const CaracteristicsSchema = SchemaFactory.createForClass(Caracteristics);
+export const CaracteristicsSchema =
+  SchemaFactory.createForClass(Caracteristics);

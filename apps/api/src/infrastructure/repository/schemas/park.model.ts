@@ -26,7 +26,6 @@ export class Park extends Document {
 
   @Prop({ required: true })
   spaceType: SpaceType;
-  
 }
 
 export const ParkSchema = SchemaFactory.createForClass(Park);

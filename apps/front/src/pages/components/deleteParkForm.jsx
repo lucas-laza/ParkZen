@@ -19,9 +19,11 @@ export default function DeleteParkForm(props) {
 
     const fetchData = async () => {
         try {
-            const response = await axios.post('http://localhost:3000/parks');
+            console.log(props.id);
+            const response = await axios.delete('http://localhost:3000/parks', { data: { id: props.id } });
             if(response){
                 console.log(response);
+                props.submit()
             }
         } catch (error) {
             console.error(error);
@@ -47,7 +49,7 @@ export default function DeleteParkForm(props) {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Non</button>
-                            <button type="button" className="btn btn-danger" onClick={() => submit()}>Oui</button>
+                            <button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={() => submit()}>Oui</button>
                         </div>
                     </div>
                 </div>

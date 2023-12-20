@@ -7,7 +7,6 @@ export type CaracteristicsDocument = HydratedDocument<SpaceType>;
 export class SpaceType {
   @Prop()
   id: number;
-
 }
 
 export const AddressSchema = SchemaFactory.createForClass(SpaceType);
