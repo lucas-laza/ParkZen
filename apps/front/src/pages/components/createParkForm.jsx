@@ -49,7 +49,7 @@ export default function CreateParkForm() {
                 zipCode : postalCode
             }
         };
-
+        console.log(datas);
         try {
             const response = await axios.post('http://localhost:3000/parks', datas, axiosConfig);
             if(response){
