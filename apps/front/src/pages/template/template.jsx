@@ -6,7 +6,7 @@ export default function Template() {
     return(
         <div className="content">
             <Navbar/>
-            <main style={{width: "100%"}}>
+            <main>
                 <Outlet/>
             </main>
         </div>
