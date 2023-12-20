@@ -37,7 +37,7 @@ export default function Navbar() {
                         </a>
 
                         <ul className="dropdown-menu">
-                            <li className="dropdown-item">
+                            {/*<li className="dropdown-item">
                                 <NavLink className='nav-link' activeClassName="active" to="/parkings">Vos locations</NavLink>
                             </li>
                             <li className="dropdown-item">
@@ -45,7 +45,7 @@ export default function Navbar() {
                             </li>
                             <li className="dropdown-item">
                                 <NavLink className='nav-link' activeClassName="active" to="/profil">Vos informations</NavLink>
-                            </li>
+                            </li>*/}
                         </ul>
                     </div>
                 </div>

@@ -6,8 +6,11 @@ import L from 'leaflet';
 import customCarIcon from '../../assets/caricon.svg';
 import customMarkerIcon from '../../assets/marker-icon-2x.png';
 import CreateReservationForm from "../components/createReservationForm";
-import React from "react";
+import React, {useState, useEffect} from "react";
+import axios from "axios";
+import DeleteParkForm from "../components/deleteParkForm";
 export default function Home() {
+    const [parks, setParks] = useState([]);
     const position = [50.633333, 3.066667];
 
     const customIcon = new L.Icon({
@@ -24,9 +27,26 @@ export default function Home() {
         popupAnchor: [0, -32], // Ajustez l'ancre du popup selon vos besoins
     });
 
+    useEffect(() => {
+        getParks();
+    }, []);
+
+    const getParks = async () => {
+        try {
+            const response = await axios.get('http://localhost:3000/parks');
+            if(response){
+                console.log('response : ' + response);
+            }
+        } catch (error) {
+            console.error(error);
+        } finally {
+            console.log('Call done');
+        }
+    };
+
     return(
         <div className=" home">
-            <div className="home_widgets">
+            <div className="home_widgets bg-light">
                 <div className="home_widgets_account">
                     <span>Nom prenom</span>
                     <span>Vehicules</span>
@@ -38,8 +58,25 @@ export default function Home() {
                             <span className="home_widgets_parks_title">Vos places de parking</span>
                         <CreateParkForm/>
                     </div>
-                    {/*A afficher si pas de place*/}
-                    <span className="home_widgets_parks_subtitle text-secondary">Vous n'avez aucune place de parking en location, n'hesitez pas a en ajouter une ! dx </span>
+                    <div className='home_widgets_parks_content'>
+                        <div className="addressContainer">
+                            <div className="d-flex flex-column align-items-start justify-content-between">
+                                <span className="addressContainer_address">123 rue du test, Amiens 80000</span>
+                                <span className="addressContainer_renter mt-1">Publié par Antoine Gaudry</span>
+                            </div>
+                            <DeleteParkForm id={1}/>
+                        </div>
+                        {parks.length > 0 ?
+                            parks.each(park =>
+                                <div>
+                                    <span></span>
+                                </div>
+                            )
+                            :
+                            <span className="home_widgets_parks_subtitle text-secondary">Vous n'avez aucune place de parking en location, n'hesitez pas a en ajouter une ! dx </span>
+                        }
+                    </div>
+
 
                 </div>
                 <div className="home_widgets_rents d-flex flex-column">
