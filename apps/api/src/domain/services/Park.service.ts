@@ -7,6 +7,7 @@ import { Park } from '../../infrastructure/repository/schemas/park.model';
 import { CreateParkDTO } from 'src/dto/CreatePark.dto';
 import { HttpStatus } from '@nestjs/common';
 import { response } from 'express';
+import { randomUUID } from 'crypto';
 
 @Injectable()
 export class ParkService {
@@ -26,6 +27,8 @@ export class ParkService {
       return response.status(HttpStatus.BAD_REQUEST);
     }
 
+    payload['id'] = randomUUID();
+
     // const tokenData = null;
     // const tokenData = this.decodeToken(token);
 
@@ -41,6 +44,14 @@ export class ParkService {
 
   async findAll(): Promise<Park[]> {
     return this.parkModel.find().exec();
+  }
+
+  async delete(id: string): Promise<any> {
+    const result = await this.parkModel.deleteOne({ id: id }).exec();
+    if (result.deletedCount === 0) {
+      throw new Error(`Park with ID ${id} not found.`);
+    }
+    return result;
   }
 
   decodeToken(token: string): any {

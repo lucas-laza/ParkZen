@@ -9,8 +9,8 @@ export type ParkDocument = HydratedDocument<Park>;
 
 @Schema()
 export class Park {
-  // @Prop()
-  // _id: string;
+  @Prop()
+  id: string;
   @Prop({
     required: true,
     type: mongoose.Schema.Types.ObjectId,
