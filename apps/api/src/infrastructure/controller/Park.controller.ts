@@ -1,8 +1,17 @@
 // park.controller.ts
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Delete,
+  HttpException,
+  HttpStatus,
+} from '@nestjs/common';
 // import { Controller, Get, Post, Body, Headers } from '@nestjs/common';
 import { ParkService } from '../../domain/services/Park.service';
 import { Park } from '../repository/schemas/park.model';
+import { DeleteParkDTO } from 'src/dto/DeletePark.dto';
 
 @Controller('parks')
 export class ParkController {
@@ -22,5 +31,17 @@ export class ParkController {
   @Get()
   async findAll(): Promise<Park[]> {
     return this.parkService.findAll();
+  }
+
+  @Delete()
+  async delete(@Body() deleteParkDto: DeleteParkDTO): Promise<any> {
+    try {
+      if (!deleteParkDto.id) {
+        throw new HttpException('ID is required', HttpStatus.BAD_REQUEST);
+      }
+      return await this.parkService.delete(deleteParkDto.id);
+    } catch (error) {
+      throw new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
   }
 }
