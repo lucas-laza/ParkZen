@@ -30,7 +30,6 @@ export class ParkService {
     console.log(tokenData);
     if (tokenData) {
       payload['user'] = tokenData;
-      
     } else {
       return response.status(HttpStatus.BAD_REQUEST);
     }
